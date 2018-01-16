@@ -11,10 +11,10 @@ a:hover {
   color: #025b42;
 }
 body {
-  font-size: 14px;
+  font-size: 13px;
   line-height: 1.428571429;
   color: #6f6e6e;
-  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+  font-family: 'Source Sans Pro', 'Roboto', Helvetica, Arial, sans-serif;
 }
 h1,
 h2,
@@ -34,7 +34,7 @@ h6,
 }
 h3,
 .h3 {
-  font-size: 32px;
+  font-size: 25px;
   margin-bottom: 14px;
 }
 .navbar-inverse {
@@ -78,7 +78,7 @@ hr {
 }
 .stats > div:not(#addressError) {
   color: #7C7C7C;
-  padding: 10px 0px;
+  padding: 6px 0px;
 }
 .stats > div:not(#addressError).marketFooter {
   padding: 5px 0;
@@ -90,7 +90,7 @@ hr {
   text-align: center;
 }
 .stats > div:not(#addressError) > span:not(.input-group-btn):first-of-type {
-  font-weight: 500;
+  font-weight: 600;
   padding: 0 2px;
   color: #336A80;
 }

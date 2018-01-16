@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, minimum-scale=1">
 
-    <title>Sumokoin Mining Pool</title>
+    <title>Edollar Mining Pool</title>
 
     <!-- favicon -->
 	<link rel="shortcut icon" type="image/x-icon" href="/favicon.ico">
@@ -277,7 +277,6 @@
             fetchLiveStats();
         });
     }
-
     function fetchHealthState() {
         $.ajax({
             url: api + '/health',
@@ -294,8 +293,6 @@
     // Every 5 seconds check the health status.
     setInterval(fetchHealthState, 5000);
     fetchHealthState();
-
-
     function floatToString(float) {
         return float.toFixed(6).replace(/[0\.]+$/, '');
     }
@@ -361,7 +358,7 @@
                 <span class="icon-bar"></span>
             </button>
             <a class="navbar-brand page-scroll" href="/">
-                <i class="fa fa-circle sumo-orange"></i> Sumokoin Pool
+                <i class="fa fa-circle sumo-orange"></i> EDOLLAR Mining Pool
             </a>
         </div>
         <div class="collapse navbar-collapse">
@@ -383,23 +380,15 @@
                     <i class="fa fa-tachometer"></i> Worker Stats
                 </a></li>
 
-                <li class="dropdown">
-                  <a class="dropdown-toggle" data-toggle="dropdown" href="#"><i class="fa fa-comments"></i> Support
-                    <span class="caret"></span>
-                  </a>
-                  <ul class="dropdown-menu">
                     <li>
                       <a class="hot_link" data-page="getting_started.html" href="#getting_started">
                         <i class="fa fa-rocket"></i> Getting Started </a>
                     </li>
-                    <li>
+                    <li   >
                       <a class="hot_link" data-page="support.html" href="#support">
                         <i class="fa fa-comments"></i> Contact </a>
                     </li>
-                  </ul>
-                </li>
-
-                <li><a class="hot_link" data-page="settings.html" href="#settings">
+                <li style="display:none;"><a class="hot_link" data-page="settings.html" href="#settings">
                     <i class="fa fa-cog"></i> Settings
                 </a></li>
 
@@ -424,8 +413,7 @@
         This pool is not healthy! Contact the admin for support.
     </div>
     <div class="text-muted">
-        Powered by <a target="_blank"
-          href="https://github.com/SadBatman/cryptonote-sumokoin-pool/"><i class="fa fa-github"></i> cryptonote-sumokoin-pool</a>
+        Powered by <i class="fa fa-github"></i> cryptonote-uni-pool
         <span id="poolVersion"></span>
         open sourced under the <a href="http://www.gnu.org/licenses/gpl-2.0.html">GPL</a>
     </div>
