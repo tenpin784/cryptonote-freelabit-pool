@@ -270,7 +270,7 @@
             <div class="yourStats"><i class="fa fa-bank"></i> Pending Balance: <span id="yourPendingBalance"></span></div>
             <div class="yourStats"><i class="fa fa-money"></i> Total Paid: <span id="yourPaid"></span></div>
             <div id="nextPaymentEstimate" class="yourStats"><i class="fa fa-money"></i> Next payment:
-                <span id="yourNextPaymentEstimate"> SUMO</span>
+                <span id="yourNextPaymentEstimate"> </span>
                 <span data-toggle="tooltip" title="A rough estimate of the payment you'd get if a block was found RIGHT NOW."
                       class="fa fa-question-circle">
                 </span>
@@ -566,7 +566,7 @@
                         if (!$('#nextPaymentEstimate').is(":visible")) {
                             $('#nextPaymentEstimate').show();
                         }
-                        updateText('yourNextPaymentEstimate', data.stats.payout_estimate);
+                        updateText('yourNextPaymentEstimate', parseFloat(data.stats.payout_estimate).toFixed(4) + ' ' + lastStats.config.symbol);
                     }
 
                     renderPayments(data.payments);
