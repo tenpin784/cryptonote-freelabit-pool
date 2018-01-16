@@ -87,8 +87,8 @@
 <h1>Welcome to edc.mine.nu</H1>
 <ul>
 <li>Location: West Europe (Azure datacenter)
-<li>Miner worker statistics: YOUR_WALLET_ADDRESS+workername
-<li>With fixed diff (Good for NiceHash): YOUR_WALLET_ADDRESS.fixeddiff
+<li>Miner Worker Stats page: YOUR_WALLET_ADDRESS+WorkerName
+<li>Fixed Diff (Good for NiceHash): YOUR_WALLET_ADDRESS.FixedDiff
 </ul>
 
 </div>
@@ -558,10 +558,9 @@
                     updateText('yourPaid', getReadableCoins(data.stats.paid));
                     updateText('yourPendingBalance', getReadableCoins(data.stats.balance));
 
-		    var profit = (unhumanize(data.stats.hashrate) * 86400 / lastStats.network.difficulty) * lastStats.network.reward;
-                    if (profit) {
-                      updateText('yourEstimatePerDay', getReadableCoins(profit,2) );
-                    }
+		    if (data.stats.hashrate)
+		    	var profit = (unhumanize(data.stats.hashrate) * 86400 / lastStats.network.difficulty) * lastStats.network.reward;
+                    	updateText('yourEstimatePerDay', getReadableCoins(profit,2));
 
                     if (data.stats.payout_estimate != undefined) {
                         if (!$('#nextPaymentEstimate').is(":visible")) {
