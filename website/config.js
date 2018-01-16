@@ -14,4 +14,4 @@ var blockchainExplorer = "https://explorer.edollar.cash/block/{id}";
 
 var transactionExplorer = "https://explorer.edollar.cash/tx/{id}";
 
-var themeCss = "themes/default-theme.css";
+var themeCss = "themes/edollar-theme.css";

@@ -558,13 +558,10 @@
                     updateText('yourPaid', getReadableCoins(data.stats.paid));
                     updateText('yourPendingBalance', getReadableCoins(data.stats.balance));
 
-		    var profit = parseFloat(data.stats.hashrate);
-		    var profit = (parseFloat(data.stats.hashrate) * 86400 / lastStats.network.difficulty) * lastStats.network.reward;
-                    // usare size to byte
-                    //if (profit) {
-                      updateText('yourEstimatePerDay', 'n/a');
-                    //  return;
-                    //}
+		    var profit = (unhumanize(data.stats.hashrate) * 86400 / lastStats.network.difficulty) * lastStats.network.reward;
+                    if (profit) {
+                      updateText('yourEstimatePerDay', getReadableCoins(profit,2) );
+                    }
 
                     if (data.stats.payout_estimate != undefined) {
                         if (!$('#nextPaymentEstimate').is(":visible")) {
@@ -727,5 +724,14 @@
             success: createCharts
         });
     });
+
+function unhumanize(text) { 
+    var powers = {'k': 1, 'm': 2, 'g': 3, 't': 4};
+    var regex = /(\d+(?:\.\d+)?)\s?(k|m|g|t)?b?/i;
+
+    var res = regex.exec(text);
+
+    return res[1] * Math.pow(1024, powers[res[2].toLowerCase()]);
+}
 
 </script>
