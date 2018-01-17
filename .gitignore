@@ -3,3 +3,5 @@ node_modules/
 logs/
 /nbproject/private/
 website/website_edc
+cert.pem
+privkey.pem
