@@ -84,11 +84,13 @@
 
 <div id="siteInfo">
 
-<h1>Welcome to edc.mine.nu</H1>
+<h1>Fast & Secure Edollar Mining</H1>
 <ul>
-<li>Location: West Europe (Azure datacenter)
-<li>Miner Worker Stats page: YOUR_WALLET_ADDRESS+WorkerName
-<li>Fixed Diff (Good for NiceHash): YOUR_WALLET_ADDRESS.FixedDiff
+<li>Location: <b>Europe Azure Datacenter</b>
+<li>Dynamic and Fixed Difficulty Available
+<li>Per-Worker hashrate charts <a href="http://edc.mine.nu/#worker_stats"><b>here</b></a>
+<li>Payments interval: 15 minutes, Minimum Payment: 20 EDC
+<li>SSL
 </ul>
 
 </div>
@@ -725,8 +727,8 @@
     });
 
 function unhumanize(text) { 
-    var powers = {'k': 1, 'm': 2, 'g': 3, 't': 4};
-    var regex = /(\d+(?:\.\d+)?)\s?(k|m|g|t)?b?/i;
+    var powers = {'h': 0, 'k': 1, 'm': 2, 'g': 3, 't': 4};
+    var regex = /(\d+(?:\.\d+)?)\s?(h|k|m|g|t)?b?/i;
 
     var res = regex.exec(text);
 

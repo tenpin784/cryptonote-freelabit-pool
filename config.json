@@ -22,31 +22,52 @@
         "poolAddress": "edq4kXY7NkKjfFWLWmJdnC8MZYqJedkMiRq5o21XzZxzfwMjBHEk4GwbqfbARqo2Lj2thr1W5watYeeetnAu3QYP1Sj7recU2",
         "blockRefreshInterval": 1000,
         "minerTimeout": 900,
+        "sslKey": "privkey.pem",
+        "sslCert": "cert.pem",
         "ports": [
             {
                 "port": 6664,
-                "difficulty": 5000,
+                "difficulty": 2000,
                 "desc": "Low end hardware"
             },
             {
+                "port": 7774,
+                "difficulty": 2000,
+                "desc": "Low end hardware (SSL protected)",
+                "type": "SSL"
+            },
+            {
                 "port": 6665,
-                "difficulty": 15000,
+                "difficulty": 10000,
                 "desc": "Mid range hardware"
             },
             {
+                "port": 7775,
+                "difficulty": 10000,
+                "desc": "Mid range hardware (SSL protected)",
+                "type": "SSL"
+            },
+            {
                 "port": 6666,
-                "difficulty": 30000,
+                "difficulty": 20000,
                 "desc": "High end hardware"
+            },
+            {
+                "port": 7776,
+                "difficulty": 20000,
+                "desc": "High end hardware (SSL protected)",
+                "type": "SSL"
             },
             {
                 "port": 6667,
                 "difficulty": 400000,
-                "desc": "NiceHash Port"
+                "desc": "Hidden port",
+                "hidden": true
             }
         ],
         "varDiff": {
             "minDiff": 4000,
-            "maxDiff": 100000,
+            "maxDiff": 200000,
             "targetTime": 100,
             "retargetTime": 30,
             "variancePercent": 30,
@@ -73,12 +94,12 @@
 
     "payments": {
         "enabled": true,
-        "interval": 600,
+        "interval": 900,
         "maxAddresses": 30,
         "mixin": 4,
         "transferFee": 20000000,
         "minPayment": 20000000000,
-        "maxTransactionAmount": 5000000000000,
+        "maxTransactionAmount": 10000000000000,
         "denomination": 10000000,
         "useDynamicTransferFee": true,
         "transferFeePerPayee": 4000000,
@@ -101,11 +122,17 @@
         "enabled": true,
         "hashrateWindow": 600,
         "updateInterval": 20,
-        "port": 9999,
+        "port": 9998,
         "blocks": 30,
         "payments": 30,
         "password": "password1",
-        "trust_proxy_ip": false
+        "trust_proxy_ip": false,
+	"SSL": true,
+	"ssl": true, 
+	"sslport": 9999,
+	"sslcert": "cert.pem",
+	"sslkey": "privkey.pem",
+	"sslca": "/etc/letsencrypt/live/edc.mine.nu/fullchain.pem"
     },
 
     "daemon": {

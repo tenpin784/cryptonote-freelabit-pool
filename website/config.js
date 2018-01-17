@@ -1,4 +1,4 @@
-var api = "http://edc.mine.nu:9999";
+var api = "https://edc.mine.nu:9999";
 
 var poolHost = "edc.mine.nu";
 
