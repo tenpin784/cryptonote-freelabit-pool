@@ -142,8 +142,8 @@ code {
   background-color: #dbebff;
 }
 .table > thead > tr > th {
-  color: #612212;
-  border-bottom-color: #612212;
+  color: #3d3d3d;
+  border-bottom-color: #3d3d3d;
 }
 .table > tbody > tr > td {
   border-top-color: #c9e0e9;

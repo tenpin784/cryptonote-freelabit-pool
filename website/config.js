@@ -6,7 +6,7 @@ var irc = "irc.freenode.net/#hcnminenu";
 
 var email = "pool@pool.com";
 
-var cryptonatorWidget = ["XMR-BTC", "XMR-USD", "BTC-USD", "XMR-EUR", "BTC-EUR"];
+var cryptonatorWidget = ["XMR-BTC", "XMR-USD", "BTC-USD", "BTC-EUR"];
 
 var easyminerDownload = "https://github.com/zone117x/cryptonote-easy-miner/releases/";
 

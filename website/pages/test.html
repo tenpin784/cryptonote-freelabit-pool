@@ -86,12 +86,12 @@
 
 <h1>Fast & Secure Edollar Mining</H1>
 <ul>
-<li>Europe Azure Datacenter with SSL Support </b>
+<li>Location: <b>Europe Azure Datacenter</b>
 <li>Dynamic and Fixed Difficulty Available
-<li><a href="http://edc.mine.nu/#worker_stats">Per-Worker hashrate charts</a>
+<li>Per-Worker hashrate charts <a href="http://edc.mine.nu/#worker_stats"><b>here</b></a>
 <li>Payments interval: 15 minutes
-<li><a href="http://edc.mine.nu/#settings">Custom payment thresholds</a> (Min: 20 EDC)
-<li>Total Pool Fee: 0<b><span id="poolFee"></span> until until 7 February</b>
+<li>Minimum Payment: 20 EDC
+<li>SSL
 </ul>
 
 </div>
@@ -112,14 +112,14 @@
     <div class="col-md-4 stats">
         <h3>Our Pool</h3>
         <div><i class="fa fa-tachometer"></i> Hash Rate: <span id="poolHashrate"></span></div>
-        <div><i class="fa fa-users"></i> Connected: <span id="poolMiners"></span> Miners ( <span id="poolWorkers"></span> Workers )</div>
         <div><i class="fa fa-clock-o"></i> Block Found: <span id="poolLastBlockFound"></span></div>
-        <div><i class="fa fa-history"></i> Block Found Every: <span id="blockSolvedTime"></span> (est.)</div>
+        <div><i class="fa fa-users"></i> Connected Miners: <span id="poolMiners"></span></div>
         <div id="donations"><i class="fa fa-gift"></i> Donations: <span id="poolDonations"></span></div>
-        <div><i class="fa fa-star-half-o"></i>Current Block Effort: <span id="currentEffort"></span></div>
+        <div><i class="fa fa-money"></i> Total Pool Fee: <span id="poolFee"></span></div>
+        <div><i class="fa fa-history"></i> Block Found Every: <span id="blockSolvedTime"></span> (est.)</div>
         <div>
           <i class="fa fa-microchip"></i> Pool load: <span id="poolLoad"></span>
-          <span data-toggle="tooltip" title="The average system load of the last 15 minutes." class="fa fa-question-circle">
+          <span data-toggle="tooltip" title="The average system load of the last 15 minutes. The closer this gets to 1, the more overloaded the pool is." class="fa fa-question-circle">
           </span>
         </div>
     </div>
@@ -199,7 +199,7 @@
 		        minSpotColor: null,
 		        maxSpotColor: null,
 		        highlightLineColor: '#f08000',
-                highlightSpotColor: '#ff9900',
+                highlightSpotColor: '#ff5656',
 		        spotRadius: 3,
 		        drawNormalOnTop: false,
 		        chartRangeMin: 0,
@@ -215,7 +215,7 @@
 		        minSpotColor: null,
 		        maxSpotColor: null,
 		        highlightLineColor: '#f08000',
-                highlightSpotColor: '#ff9900',
+                highlightSpotColor: '#ff5656',
 		        spotRadius: 3,
 		        drawNormalOnTop: false,
 		        chartRangeMin: 0,
@@ -278,14 +278,9 @@
                       class="fa fa-question-circle">
                 </span>
             </div>
-            <div class="yourStats"><i class="fa fa-money"></i> Estimate Per Day: <span id="yourEstimatePerDay"></span>
-		<span data-toggle="tooltip" title="A rough estimate based on last 24H Avg Hash Rate"
-                      class="fa fa-question-circle"></div>
+            <div class="yourStats"><i class="fa fa-money"></i> Estimate Per Day: <span id="yourEstimatePerDay"></span></div>
             <div class="yourStats"><i class="fa fa-clock-o"></i> Last Share Submitted: <span id="yourLastShare"></span></div>
             <div class="yourStats"><i class="fa fa-tachometer"></i> Hash Rate: <span id="yourHashrateHolder"></span></div>
-            <div class="yourStats"><i class="fa fa-tachometer"></i> 24H Avg Hash Rate: <span id="yourHashPerDay"></span>
-                 <span data-toggle="tooltip" title="A rough estimate of last 24H of minining Average Hash Rate"
-                      class="fa fa-question-circle"></div>
             <div class="yourStats"><i class="fa fa-cloud-upload"></i> Total Hashes Submitted: <span id="yourHashes"></span></div>
         </div>
         <div class="col-sm-4">
@@ -356,8 +351,6 @@
             updateText('lastHash', lastStats.network.hash.substr(0, 13) + '...').setAttribute('href', getBlockchainUrl(lastStats.network.hash));
 
             updateText('poolHashrate', getReadableHashRateString(lastStats.pool.hashrate) + '/sec');
-            updateText('poolHashrateTop', getReadableHashRateString(lastStats.pool.hashrate) + '/sec');
-
 
             if (lastStats.pool.lastBlockFound){
                 var d = new Date(parseInt(lastStats.pool.lastBlockFound)).toISOString();
@@ -368,8 +361,6 @@
 
             //updateText('poolRoundHashes', lastStats.pool.roundHashes.toString());
             updateText('poolMiners', lastStats.pool.miners.toString());
-            updateText('poolWorkers', lastStats.pool.workers.toString());
-
 
 
             var totalFee = lastStats.config.fee;
@@ -390,12 +381,11 @@
             // Get the 15 minute average load.
             var averageLoad = lastStats.system.load[2];
             averageLoad = averageLoad / lastStats.system.number_cores;
-            updateText('poolLoad', (averageLoad*100).toFixed(1) + ' %');
+            updateText('poolLoad', averageLoad.toFixed(2));
 
 
             updateText('blockSolvedTime', getReadableTime(lastStats.network.difficulty / lastStats.pool.hashrate));
             updateText('calcHashSymbol', lastStats.config.symbol);
-	    updateText('currentEffort', (lastStats.pool.roundHashes / lastStats.network.difficulty * 100).toFixed(1) + '%');
 
             calcEstimateProfit();
         }
@@ -567,28 +557,13 @@
                         updateText('yourLastShare', 'Never');
 
                     updateText('yourHashrateHolder', (data.stats.hashrate || '0 H') + '/sec');
-                    updateText('yourHashrateHolderTop', (data.stats.hashrate || '0 H') + '/sec');
                     updateText('yourHashes', (data.stats.hashes || 0).toString());
                     updateText('yourPaid', getReadableCoins(data.stats.paid));
                     updateText('yourPendingBalance', getReadableCoins(data.stats.balance));
-		    
-		    // Calculate average 24H Hash rate from hashrate charts data if lastvalue < 4 h
-		    if(data.charts.hashrate && data.charts.hashrate.length > 0){
-			var perDayHashLastDate = data.charts.hashrate[data.charts.hashrate.length - 1][0];
-			var perDayHashLastDate = ((Date.parse(new Date)/1000) - perDayHashLastDate );
-			if (perDayHashLastDate < 14400){
-		    	    const arrayColumn = (arr, n) => arr.map(x => x[n]);
- 		    	    var perDayHash = arrayColumn(data.charts.hashrate, 1);
-			    var perDayHashCount = perDayHash.length;
-			    if (perDayHashCount > 2)  {
-			    	var perDayHash = perDayHash.reduce((a, b) => a + b, 0);
-			    	var perDayHash = perDayHash/perDayHashCount ;
-			    	updateText('yourHashPerDay', getReadableHashRateString(perDayHash) + '/sec' );
-                        	var profit = (perDayHash * 86400 / lastStats.network.difficulty) * lastStats.network.reward;
-                    		updateText('yourEstimatePerDay', getReadableCoins(profit,2));
-		            }
-		        }
-		    }
+
+		    if (data.stats.hashrate)
+		    	var profit = (unhumanize(data.stats.hashrate) * 86400 / lastStats.network.difficulty) * lastStats.network.reward;
+                    	updateText('yourEstimatePerDay', getReadableCoins(profit,2));
 
                     if (data.stats.payout_estimate != undefined) {
                         if (!$('#nextPaymentEstimate').is(":visible")) {

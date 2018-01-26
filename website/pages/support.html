@@ -1,3 +1,17 @@
 <h2>Contact</h2>
 
 For support ping me at: euminepool@gmail.com
+
+<script>
+
+    currentPage = {
+        destroy: function(){
+
+        },
+        update: function(){
+		updateText('poolHashrateTop', getReadableHashRateString(lastStats.pool.hashrate) + '/sec');
+        }
+    };
+
+
+</script>

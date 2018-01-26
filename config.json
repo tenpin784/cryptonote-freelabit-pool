@@ -112,7 +112,7 @@
         "enabled": true,
         "interval": 30,
         "depth": 60,
-        "poolFee": 1.0,
+        "poolFee": 0,
         "devDonation": 0,
         "coreDevDonation": 0,
         "extraFeaturesDevDonation":0
