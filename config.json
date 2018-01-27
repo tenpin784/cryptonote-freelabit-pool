@@ -1,6 +1,6 @@
 {
-    "coin": "Edollar",
-    "symbol": "EDC",
+    "coin": "Freelabit",
+    "symbol": "FBF",
     "coinUnits": 1000000000,
     "coinDifficultyTarget": 120,
 
@@ -19,47 +19,47 @@
     "poolServer": {
         "enabled": true,
         "clusterForks": "auto",
-        "poolAddress": "edq4kXY7NkKjfFWLWmJdnC8MZYqJedkMiRq5o21XzZxzfwMjBHEk4GwbqfbARqo2Lj2thr1W5watYeeetnAu3QYP1Sj7recU2",
+        "poolAddress": "TFLBgsVmtbsBQwhCP1S93vUVQQ5Nt5t6HhXVBxyNxvtaWeXus1MBKiFh13i6iU9FoiREHdG1UZGFz6iitVeAfsYKHHFQtSMrSCT",
         "blockRefreshInterval": 1000,
         "minerTimeout": 900,
         "sslKey": "privkey.pem",
         "sslCert": "cert.pem",
         "ports": [
             {
-                "port": 6664,
+                "port": 6221,
                 "difficulty": 2000,
                 "desc": "Low end hardware"
             },
             {
-                "port": 7774,
+                "port": 6222,
                 "difficulty": 2000,
                 "desc": "Low end hardware (SSL protected)",
                 "type": "SSL"
             },
             {
-                "port": 6665,
+                "port": 6223,
                 "difficulty": 10000,
                 "desc": "Mid range hardware"
             },
             {
-                "port": 7775,
+                "port": 6224,
                 "difficulty": 10000,
                 "desc": "Mid range hardware (SSL protected)",
                 "type": "SSL"
             },
             {
-                "port": 6666,
+                "port": 6225,
                 "difficulty": 20000,
                 "desc": "High end hardware"
             },
             {
-                "port": 7776,
+                "port": 6226,
                 "difficulty": 20000,
                 "desc": "High end hardware (SSL protected)",
                 "type": "SSL"
             },
             {
-                "port": 6667,
+                "port": 6227,
                 "difficulty": 400000,
                 "desc": "Hidden port",
                 "hidden": true
@@ -96,7 +96,7 @@
         "enabled": true,
         "interval": 900,
         "maxAddresses": 30,
-        "mixin": 4,
+        "mixin": 3,
         "transferFee": 20000000,
         "minPayment": 20000000000,
         "maxTransactionAmount": 10000000000000,
@@ -111,8 +111,8 @@
     "blockUnlocker": {
         "enabled": true,
         "interval": 30,
-        "depth": 60,
-        "poolFee": 0,
+        "depth": 1,
+        "poolFee": 1,
         "devDonation": 0,
         "coreDevDonation": 0,
         "extraFeaturesDevDonation":0
@@ -122,27 +122,27 @@
         "enabled": true,
         "hashrateWindow": 600,
         "updateInterval": 20,
-        "port": 9998,
+        "port": 6201,
         "blocks": 30,
         "payments": 30,
         "password": "password1",
         "trust_proxy_ip": false,
 	"SSL": true,
 	"ssl": true, 
-	"sslport": 9999,
+	"sslport": 6202,
 	"sslcert": "cert.pem",
 	"sslkey": "privkey.pem",
-	"sslca": "/etc/letsencrypt/live/edc.mine.nu/fullchain.pem"
+	"sslca": "/etc/letsencrypt/live/freelabit.fasteupool.com/fullchain.pem"
     },
 
     "daemon": {
         "host": "127.0.0.1",
-        "port": 10011
+        "port": 10021
     },
 
     "wallet": {
         "host": "127.0.0.1",
-        "port": 10012
+        "port": 10022
     },
 
 
