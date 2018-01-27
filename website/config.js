@@ -1,6 +1,6 @@
-var api = "https://edc.mine.nu:9999";
+var api = "https://freelabit.fasteupool.com:6202";
 
-var poolHost = "edc.mine.nu";
+var poolHost = "freelabit.fasteupool.com";
 
 var irc = "irc.freenode.net/#hcnminenu";
 
